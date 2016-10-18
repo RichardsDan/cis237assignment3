@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Daniel Richards
+// CIS 237
+// 10/11/2016
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,16 +17,19 @@ namespace cis237assignment3
         protected bool _arm;
 
         // Constant price per optional feature
-        public const int OPTIONAL_FEATURE_PRICE = 70;
+        protected const int OPTIONAL_FEATURE_PRICE = 70;
 
         // Constructor
         public UtilityDroid(string material, string model, string color, 
             bool toolBox, bool computerConnection, bool arm)
+            // Call base Droid constructor
             :base(material, model, color)
         {
             this._toolBox = toolBox;
             this._computerConnection = computerConnection;
             this._arm = arm;
+
+            this.CalculateTotalCost();
         }
 
         // Methods
@@ -31,6 +37,7 @@ namespace cis237assignment3
         {
             string allOutput = base.ToString();
 
+            // Add optional features if they are chosen
             if (_toolBox)
                 allOutput += "|ToolBox|  ";
             if (_computerConnection)
@@ -41,8 +48,10 @@ namespace cis237assignment3
             return allOutput;
         }
 
+        // Call base total cost then add to it based on optional features
         public override void CalculateTotalCost()
         {
+            base.CalculateTotalCost();
             if (_toolBox)
                 _totalCost += OPTIONAL_FEATURE_PRICE;
             if (_computerConnection)

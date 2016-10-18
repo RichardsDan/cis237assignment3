@@ -3,7 +3,7 @@
 
 ## Author
 
-
+Daniel Richards
 
 ## Description
 
@@ -114,7 +114,8 @@ It may be beneficial for you to create extra methods within the droid sub classe
 | Total                      | 100    |
 
 ## Outside Resources Used
-
-
+cis237assignment1
+cis237inclass3
 
 ## Known Problems, Issues, And/Or Errors in the Program
+None

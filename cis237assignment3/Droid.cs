@@ -1,4 +1,7 @@
-﻿using System;
+﻿// Daniel Richards
+// CIS 237
+// 10/11/2016
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,26 +31,69 @@ namespace cis237assignment3
             this._material = material;
             this._model = model;
             this._color = color;
-        }
 
-        public Droid()
-        {
+            this._totalCost = 0m;
 
+            // Calculates total cost of Droid so far
+            CalculateTotalCost();
         }
 
         public override string ToString()
         {
-            return _material.PadRight(15) + _model.PadRight(10) + _color.PadRight(10);
+            return _material.PadRight(10) + _model.PadRight(10) + _color.PadRight(8);
         }
 
-        protected decimal CalculateBaseCost()
+        /// <summary>
+        /// Calculate base cost of droid based on the type of droid and the material used to make it
+        /// </summary>
+        /// <returns></returns>
+        private decimal CalculateBaseCost()
         {
-            return 1m;
+            decimal cost = 0m;
+
+            // Determines the type of droid and adds cost accordingly
+            switch(_model)
+            {
+                case "Protocol":
+                    cost += 500m;
+                    break;
+                case "Utility":
+                    cost += 200m;
+                    break;
+                case "Janitor":
+                    cost += 100m;
+                    break;
+                default:
+                    cost += 500m;
+                    break;
+            }
+
+            // Determines the material of the droid and adds cost accordingly
+            switch (_material)
+            {
+                case "Steel":
+                    cost += 75m;
+                    break;
+                case "Aluminum":
+                    cost += 90m;
+                    break;
+                case "Titanium":
+                    cost += 150m;
+                    break;
+                default:
+                    cost += 180m;
+                    break;
+            }
+
+            return cost;
         }
 
+        /// <summary>
+        /// Calculates the total cost of a droid based on it's base cost and extra features
+        /// </summary>
         public virtual void CalculateTotalCost()
         {
-            CalculateBaseCost();
+            _baseCost = CalculateBaseCost();
             _totalCost = _baseCost;
         }
     }
